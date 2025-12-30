@@ -1,0 +1,36 @@
+name: Build and Deploy with Webpack
+
+on:
+  push:
+    branches:
+      - main   # chạy khi có push lên branch main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout code
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # 2. Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      # 3. Cài đặt dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # 4. Build bằng Webpack
+      - name: Build project
+        run: npm run build
+
+      # 5. Deploy lên GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist   # thư mục chứa file build của Webpack
