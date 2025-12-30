@@ -1,0 +1,5 @@
+{
+  "name": "Doc2LaTeX Converter",
+  "description": "Ứng dụng chuyển đổi tài liệu Word và PDF sang mã LaTeX chất lượng cao sử dụng công nghệ Google Gemini AI.",
+  "requestFramePermissions": []
+}
